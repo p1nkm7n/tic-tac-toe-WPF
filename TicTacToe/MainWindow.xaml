@@ -1,0 +1,184 @@
+﻿<mah:MetroWindow  
+        x:Name="MainGameWindow"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        x:Class="TicTacToe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTacToe"
+        mc:Ignorable="d"
+        Title="TIC TAC TOE"
+        TitleForeground="White"   
+        WindowTitleBrush ="Black"
+        IgnoreTaskbarOnMaximize="True"
+        Background="AliceBlue"
+        IsWindowDraggable="False"
+        WindowStartupLocation="CenterScreen"
+        Topmost="False"
+        ResizeMode="NoResize"
+        Height="600" Width="800">
+
+    <Grid x:Name="MainGrid">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <TextBlock x:Name="WinnerTextBox" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" FontSize="30"/>
+
+                <Button Background="DodgerBlue" Cursor="Hand" Click="ResetGame" HorizontalAlignment="Right" Margin="0,0,40,0" BorderThickness="2" Height="50" Width="120" Content="RESET" FontSize="18">
+                </Button>
+
+            </Grid>
+
+            <Grid x:Name="GameGrid" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="A1" Content="" FontSize="70" FontWeight="Bold"  BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="0" Grid.Column="0">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="A2" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="0" Grid.Column="1">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="A3" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="0" Grid.Column="2">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="B1" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="1" Grid.Column="0">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="B2" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="1" Grid.Column="1">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="B3" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="1" Grid.Column="2">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="C1" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="2" Grid.Column="0">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="C2" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="2" Grid.Column="1">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+                <Button x:Name="C3" Content="" FontSize="70" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Click="Click" Grid.Row="2" Grid.Column="2">
+
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="Button.Opacity" Value="0.8" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+    
+</mah:MetroWindow>
