@@ -24,9 +24,11 @@ namespace TicTacToe
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public const string O_SYMBOL = "O";
-        public const string X_SYMBOL = "X";
+        public readonly string VERSION = "1.0.1";
+        public readonly string O_SYMBOL = "O";
+        public readonly string X_SYMBOL = "X";
         public static bool XTurn = true;
+        Line line = null;
 
         public MainWindow()
         {
@@ -118,6 +120,9 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = A1.Content.ToString();
+
+                DrawLine(A1, A3);
+
             }
             else if (!B1.Content.Equals("")
                      && B1.Content.Equals(B2.Content)
@@ -127,6 +132,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = B1.Content.ToString();
+
+                DrawLine(B1, B3);
             }
             else if (!C1.Content.Equals("")
                      && C1.Content.Equals(C2.Content)
@@ -136,6 +143,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = C1.Content.ToString();
+
+                DrawLine(C1, C3);
             }
 
             return Tuple.Create(gameOver,winner);
@@ -154,6 +163,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = A1.Content.ToString();
+
+                DrawLine(A1, C1);
             }
             else if (!A2.Content.Equals("")
                 && A2.Content.Equals(B2.Content)
@@ -163,6 +174,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = A2.Content.ToString();
+
+                DrawLine(A2, C2);
             }
             else if (!A3.Content.Equals("")
                 && A3.Content.Equals(B3.Content)
@@ -172,6 +185,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = A3.Content.ToString();
+
+                DrawLine(A1, C3);
             }
 
             return Tuple.Create(gameOver, winner);
@@ -190,6 +205,8 @@ namespace TicTacToe
             { 
                 gameOver = true;
                 winner = A1.Content.ToString();
+
+                DrawLine(A1, C3);
             }
             else if (!C1.Content.Equals("")
                 && C1.Content.Equals(B2.Content)
@@ -199,6 +216,8 @@ namespace TicTacToe
             {
                 gameOver = true;
                 winner = C1.Content.ToString();
+
+                DrawLine(A3, C1);
             }
 
             return Tuple.Create(gameOver, winner);
@@ -223,6 +242,23 @@ namespace TicTacToe
             return tie;
         }
 
+        private void DrawLine(Button button1, Button button2)
+        {
+            Point startCoordinates = button1.TransformToAncestor(MainGrid).Transform(new Point(0, 0));
+            Point endCoordinates = button2.TransformToAncestor(MainGrid).Transform(new Point(0, 0));
+
+            line = new Line();
+            line.Visibility = System.Windows.Visibility.Visible;
+            line.StrokeThickness = 4;
+            line.Stroke = System.Windows.Media.Brushes.Black;
+            line.X1 = startCoordinates.X + button1.ActualWidth / 2;
+            line.Y1 = startCoordinates.Y + button1.ActualHeight / 2;
+            line.X2 = endCoordinates.X + button2.ActualWidth / 2;
+            line.Y2 = endCoordinates.Y + button2.ActualHeight / 2 ;
+
+            MainGrid.Children.Add(line);
+        }
+
         private void ResetGame(object sender, RoutedEventArgs e)
         {
             DisableGame();
@@ -235,6 +271,11 @@ namespace TicTacToe
                 var button = child as Button;
                 button.IsEnabled = true;
                 button.Content = string.Empty;
+            }
+
+            if (line != null)
+            {
+                MainGrid.Children.Remove(line);
             }
 
             EnableGame();

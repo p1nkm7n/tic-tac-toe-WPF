@@ -21,7 +21,7 @@
 
     <Grid x:Name="MainGrid">
 
-        <Grid>
+        <Grid x:Name="InnerGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="8*"/>
@@ -31,7 +31,7 @@
 
                 <TextBlock x:Name="WinnerTextBox" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" FontSize="30"/>
 
-                <Button Background="DodgerBlue" Cursor="Hand" Click="ResetGame" HorizontalAlignment="Right" Margin="0,0,40,0" BorderThickness="2" Height="50" Width="120" Content="RESET" FontSize="18">
+                <Button Background="DodgerBlue" Cursor="Hand" Click="ResetGame" HorizontalAlignment="Right" Margin="0,0,40,0" BorderThickness="2" Height="40" Width="100" Content="RESET" FontSize="15">
                 </Button>
 
             </Grid>
