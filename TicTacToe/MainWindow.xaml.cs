@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -248,15 +249,27 @@ namespace TicTacToe
             Point endCoordinates = button2.TransformToAncestor(MainGrid).Transform(new Point(0, 0));
 
             line = new Line();
-            line.Visibility = System.Windows.Visibility.Visible;
-            line.StrokeThickness = 4;
-            line.Stroke = System.Windows.Media.Brushes.Black;
+            line.Visibility = Visibility.Visible;
+            line.StrokeThickness = 5;
+            line.Stroke = Brushes.Red;
             line.X1 = startCoordinates.X + button1.ActualWidth / 2;
             line.Y1 = startCoordinates.Y + button1.ActualHeight / 2;
-            line.X2 = endCoordinates.X + button2.ActualWidth / 2;
-            line.Y2 = endCoordinates.Y + button2.ActualHeight / 2 ;
+
+            var coordinatesX2 = endCoordinates.X + button2.ActualWidth / 2;
+            var coordinatesY2 = endCoordinates.Y + button2.ActualHeight / 2;
 
             MainGrid.Children.Add(line);
+
+            Storyboard storyBoard = new Storyboard();
+            DoubleAnimation doubleAnimationX2 = new DoubleAnimation(line.X1, coordinatesX2, new Duration(TimeSpan.FromMilliseconds(500)));
+            DoubleAnimation doubleAnimationY2 = new DoubleAnimation(line.Y1, coordinatesY2, new Duration(TimeSpan.FromMilliseconds(500)));
+            Storyboard.SetTargetProperty(doubleAnimationX2, new PropertyPath("(Line.X2)"));
+            Storyboard.SetTargetProperty(doubleAnimationY2, new PropertyPath("(Line.Y2)"));
+            storyBoard.Children.Add(doubleAnimationY2);
+            storyBoard.Children.Add(doubleAnimationX2);
+
+            line.BeginStoryboard(storyBoard);
+
         }
 
         private void ResetGame(object sender, RoutedEventArgs e)
