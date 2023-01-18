@@ -25,7 +25,7 @@ namespace TicTacToe
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public readonly string VERSION = "1.0.1";
+        public readonly string VERSION = "1.0.2";
         public readonly string O_SYMBOL = "O";
         public readonly string X_SYMBOL = "X";
         public static bool XTurn = true;
